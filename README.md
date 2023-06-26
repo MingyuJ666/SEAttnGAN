@@ -1,5 +1,5 @@
 # SE-AttnGAN
-### The whole structure![这是图片](/Users/jin666/Simple and effective Gan/pic/method.png)
+### The whole structure![这是图片](./pic/method.png)
 ## Requirements
 - python 3.8.0
 - Pytorch 1.8.0
@@ -22,15 +22,33 @@
 
 ## Training
   ```
-  cd Simple and effective Gan/src/
+  cd src/
   ```
 ### Train the model
   -  `python train_segan.py`
 
-## Image in Epoch360
-![这是图片](/Users/jin666/Simple and effective Gan/pic/fake_sample_epoch_360.png)
+## Evaluation
+  ```
+  cd src/
+  ```
+### Input the sentence in the model 
+  -  `python eval_example.py`
+
+
+
+  
+### compute IS and FID
+  -  `python metrics_evaluation.py`
+
+
+
+
+
+
+# Image in Epoch360
+![这是图片](./pic/fake_sample_epoch_360.png)
 Random images in training process
 
 ## Some perfect images
-![这是图片](/Users/jin666/Simple and effective Gan/pic/1.png)![这是图片](/Users/jin666/Simple and effective Gan/pic/2.png)![这是图片](/Users/jin666/Simple and effective Gan/pic/3.png)![这是图片](/Users/jin666/Simple and effective Gan/pic/4.png)![这是图片](/Users/jin666/Simple and effective Gan/pic/5.png)
+![这是图片](./pic/1.png)![这是图片](./pic/2.png)![这是图片](./pic/3.png)![这是图片](./pic/4.png)![这是图片](./pic/5.png)
 
