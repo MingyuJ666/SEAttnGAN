@@ -1,16 +1,8 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# # Imports
-
-# In[1]:
 
 
 import os
 import sys
 
-
-# In[2]:
 
 
 current_cwd = os.getcwd()
@@ -18,7 +10,6 @@ src_path = '/'.join(current_cwd.split('/')[:-1])
 sys.path.append(src_path)
 
 
-# In[3]:
 
 
 import numpy as np
@@ -37,15 +28,12 @@ from src.text_encoder.model import RNNEncoder
 from utils import create_loader
 
 
-# In[4]:
 
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
 
-# # Inception model
 
-# In[5]:
 
 
 class InceptionV3(nn.Module):
@@ -63,16 +51,13 @@ class InceptionV3(nn.Module):
         return self.model(x)
 
 
-# In[6]:
+
 
 
 classifier = InceptionV3().to(device)
 classifier = classifier.eval()
 
 
-# # Dataset + DataLoader
-
-# In[7]:
 
 
 batch_size = 32
@@ -80,9 +65,6 @@ test_loader = create_loader(256, batch_size, "../data", "test")
 n_words = test_loader.dataset.n_words
 
 
-# # Generator + Text Encoder
-
-# In[8]:
 
 
 generator = Generator(n_channels=32, latent_dim=100).to(device)
@@ -90,7 +72,6 @@ generator.load_state_dict(torch.load("../gen_weights/gen_epoch_310.pth", map_loc
 generator = generator.eval()
 
 
-# In[9]:
 
 
 text_encoder = RNNEncoder.load("../text_encoder_weights/text_encoder200.pth", n_words)
@@ -101,10 +82,7 @@ for p in text_encoder.parameters():
 text_encoder = text_encoder.eval()
 
 
-# # FID calculation
 
-# In[10]:
-'''
 def calculate_fid(repr1, repr2):
     # shape of reprs: (-1, embed_dim)
     
@@ -136,9 +114,8 @@ def calculate_fid(repr1, repr2):
     fid = diff_square_norm + np.trace(sigma_r + sigma_g - 2 * sqrt_product)
     
     return fid
-'''
 
-# In[11]:
+
 
 
 def build_representations():
@@ -161,27 +138,19 @@ def build_representations():
     return real_reprs, fake_reprs
 
 
-# ## Build representations
 
-# In[12]:
 
 
 real_values, fake_values = build_representations()
 real_values = torch.tensor(real_values)
 fake_values = torch.tensor(fake_values)
 
-# ## FID value
-
-# In[13]:
 
 
-# fid_value = calculate_fid(real_values, fake_values)
-# print(f"FID value = {fid_value}")
+fid_value = calculate_fid(real_values, fake_values)
+print(f"FID value = {fid_value}")
 
 
-# # Inception score
-
-# In[14]:
 
 
 
@@ -219,7 +188,7 @@ def inception_score(reprs, batch_size):
     return np.mean(split_scores), np.std(split_scores)
 
 
-# In[15]:
+
 
 
 a,b = inception_score(fake_values, batch_size)

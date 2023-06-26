@@ -40,13 +40,15 @@
 ### compute IS and FID
   -  `python metrics_evaluation.py`
 
-
-
+##Tips
+ - We can slightly increase the learning rate and get the better result. 
+ - Generator's LR ~ (0.0001,0.0004)
+ - Generator's LR ~ (0.0003,0.0012)
 
 
 
 # Image in Epoch360
-![这是图片](./pic/fake_sample_epoch_360.png)
+![这是图片](./pic/330.png)
 Random images in training process
 
 ## Some perfect images

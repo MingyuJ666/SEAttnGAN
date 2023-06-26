@@ -37,8 +37,7 @@ class DeepFusionGAN:
         self.g_optim = torch.optim.Adam(self.generator.parameters(), lr=0.0002,betas=(0.5, 0.99))
         self.d_optim = torch.optim.Adam(self.discriminator.parameters(), lr=0.0008, betas=(0.5, 0.99))
 
-        # self.g_optim =  torch.optim.SGD(self.generator.parameters(), lr = 0.0002, momentum=0.9)
-        # self.d_optim =  torch.optim.SGD(self.discriminator.parameters(), lr = 0.0002, momentum=0.9)
+        
         self.relu = nn.ReLU()
 
     def _zero_grad(self):

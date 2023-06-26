@@ -1,14 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
 
 import os
 import sys
 
 
-# In[2]:
+
 
 
 current_cwd = os.getcwd()
@@ -16,7 +11,7 @@ src_path = '/'.join(current_cwd.split('/')[:-1])
 sys.path.append(src_path)
 
 
-# In[3]:
+
 
 
 import numpy as np
@@ -28,13 +23,12 @@ from src.text_encoder.model import RNNEncoder
 from utils import create_loader
 
 
-# In[4]:
+
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
-# In[5]:
 
 
 import time
@@ -45,18 +39,18 @@ generator.load_state_dict(torch.load("../gen_weights/gen_360.pth", map_location=
 generator = generator.eval()
 
 
-# In[6]:
+
 
 
 train_loader = create_loader(256, 24, "../data", "test")
 
-# In[7]:
+
 
 
 n_words = train_loader.dataset.n_words
 
 
-# In[8]:
+
 
 
 text_encoder = RNNEncoder.load("../text_encoder_weights/text_encoder200.pth", n_words)
@@ -67,19 +61,12 @@ for p in text_encoder.parameters():
 text_encoder = text_encoder.eval()
 
 
-# In[10]:
 
-
-
-# # Own birds
-
-# In[11]:
 
 
 dataset = train_loader.dataset
 
 
-# In[13]:
 
 
 def gen_own_bird(word_caption, name,i):
@@ -106,7 +93,7 @@ def gen_own_bird(word_caption, name,i):
     save_image(img[0].data.cpu().numpy(), "../gen_images", name + str(i))
 
 
-# In[22]:
+
 
 caption = "A blue bird with black eyes"
 i=1
