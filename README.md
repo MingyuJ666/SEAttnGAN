@@ -1,5 +1,5 @@
 # SE-AttnGAN
-### The whole structure![这是图片](./pic/method.png)
+### The whole structure![这是图片](./pic/method.jpeg)
 ## Requirements
 - python 3.8.0
 - Pytorch 1.8.0
@@ -43,13 +43,17 @@
 ##Tips
  - We can slightly increase the learning rate and get the better result. 
  - Generator's LR ~ (0.0001,0.0004)
- - Generator's LR ~ (0.0003,0.0012)
+ - Discriminator's LR ~ (0.0003,0.0012)
+ - Do not use sgd, adam is better.
 
 
 
-# Image in Epoch360
+# Image in Epoch 330
 ![这是图片](./pic/330.png)
-Random images in training process
+![这是图片](./pic/426.png)
+   Random images in training process
+  
+   300<=Epoch<=500, Image is better.
 
 ## Some perfect images
 ![这是图片](./pic/1.png)![这是图片](./pic/2.png)![这是图片](./pic/3.png)![这是图片](./pic/4.png)![这是图片](./pic/5.png)
