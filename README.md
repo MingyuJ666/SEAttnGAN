@@ -1,4 +1,4 @@
-# SE-AttnGAN
+# AccAttnGAN
 ### The whole structure![这是图片](./pic/method.jpg)
 ## Requirements
 - python 3.8.0
