@@ -1,5 +1,6 @@
 # AccAttnGAN
 ### The whole structure![这是图片](./pic/method.jpg)
+Paper is available on https://arxiv.org/abs/2306.14708
 ## Requirements
 - python 3.8.0
 - Pytorch 1.8.0
